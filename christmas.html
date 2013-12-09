@@ -31,7 +31,7 @@
 	
 	
 	Santa = function(){
-		tSanta = new Sprite(game, "santa.png", 30, 30);
+		tSanta = new Sprite(game, "santa.png", 20, 20);
 		tSanta.setSpeed(0);
 		tSanta.setPosition(100, 100);
 		
@@ -202,7 +202,7 @@
     	
     	
     	tKid.move = function(){
-    		newDir = (Math.random() * 80) - 30;
+    		newDir = (Math.random() * 90) - 45;
     		this.changeAngleBy(newDir);
     	}
     		
