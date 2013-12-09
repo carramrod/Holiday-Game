@@ -57,8 +57,8 @@
         }
         tSanta.checkAccel = function(){
         
-        	dirDX = accel.getAX();
-        	dirDY = accel.getAY();
+        	dirDX = accel.getAY();
+        	dirDY = accel.getAX();
         	
         	dirDX *= -5;
         	dirDY *= -5;
@@ -196,7 +196,7 @@
    	
     Kid = function(){
     	tKid = new Sprite(game, "kid.png", 20, 20);
-    	tKid.setSpeed(3);
+    	tKid.setSpeed(2);
     	
     	
     	tKid.move = function(){
@@ -237,7 +237,7 @@
 	function init(){
 		game = new Scene();		
 		game.setBG("green");
-		game.setSize(500, 380);
+		game.setSize(450, 380);
 			
 		santa = new Santa();		
 		cookie = new Cookie();				
@@ -250,8 +250,8 @@
 		
 		accel = new Accel();
 		
-		floor = new Sprite(game, "floor.png", 500, 380);
-		floor.setPosition(250, 190);
+		floor = new Sprite(game, "floor.png", 450, 380);
+		floor.setPosition(225, 190);
 		floor.setSpeed(0);
 		
 		game.start();
