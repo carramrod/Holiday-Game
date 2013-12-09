@@ -197,12 +197,12 @@
    	
    	
     Kid = function(){
-    	tKid = new Sprite(game, "kid.png", 20, 20);
+    	tKid = new Sprite(game, "kid.png", 15, 15);
     	tKid.setSpeed(2);
     	
     	
     	tKid.move = function(){
-    		newDir = (Math.random() * 90) - 40;
+    		newDir = (Math.random() * 80) - 30;
     		this.changeAngleBy(newDir);
     	}
     		
