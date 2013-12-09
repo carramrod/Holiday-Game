@@ -18,8 +18,8 @@
 	var floor;
 	
 	var numSocks = 5;
-	var numGifts = 10;
-	var numKids = 5;
+	var numGifts = 5;
+	var numKids = 2;
 	
 	
 	//build santa first to make sure he populatesDONE and movesDONE
@@ -74,7 +74,7 @@
     Cookie = function(){
     	tCookie = new Sprite(game, "cookies.png", 25, 25);
     	tCookie.setSpeed(0);
-    	tCookie.setPosition(200, 200);
+    	tCookie.setPosition(50, 50);
     	
     	tCookie.reset = function(){
     		
@@ -109,7 +109,7 @@
     Gift = function(){
     	tGift = new Sprite(game, "gift2.png", 20, 20);
     	tGift.setSpeed(0);
-    	tGift.setPosition(200, 200);
+    	tGift.setPosition(50, 50);
     	
     	tGift.reset = function(){
     		keepGoing = true;
@@ -154,7 +154,7 @@
    	Sock = function(){
     	tSock = new Sprite(game, "stocking.png", 20, 20);
     	tSock.setSpeed(0);
-    	tSock.setPosition(200, 200);
+    	tSock.setPosition(50, 50);
     	
     	tSock.reset = function(){
     		keepGoing = true;
