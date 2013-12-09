@@ -57,11 +57,11 @@
         }
         tSanta.checkAccel = function(){
         
-        	dirDX = accel.getAY();
-        	dirDY = accel.getAX();
+        	dirDX = accel.getAX();
+        	dirDY = accel.getAY();
         	
-        	dirDX *= -2;
-        	dirDY *= -2;
+        	dirDX *= -1;
+        	dirDY *= -1;
         	
         	santa.setDX(dirDX);
         	santa.setDY(dirDY);
