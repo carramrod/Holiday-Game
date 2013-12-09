@@ -237,6 +237,7 @@
 	function init(){
 		game = new Scene();		
 		game.setBG("green");
+		game.setSize(400, 280);
 			
 		santa = new Santa();		
 		cookie = new Cookie();				
@@ -249,8 +250,8 @@
 		
 		accel = new Accel();
 		
-		floor = new Sprite(game, "floor.png", 800,600);
-		floor.setPosition(400, 300);
+		floor = new Sprite(game, "floor.png", 400, 280);
+		floor.setPosition(200, 140);
 		floor.setSpeed(0);
 		
 		game.start();
