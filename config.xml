@@ -6,7 +6,7 @@
         id        = "com.phonegap.christmasgame"
         version   = "1.0.0">
 
-    <name>Christmas Game</name>
+    <name>Holiday Game</name>
 
     <description>
         A tilt to move game. Get santa to the cookies while avoiding the kids, stockings, and gifts
