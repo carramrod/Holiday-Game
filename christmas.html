@@ -60,8 +60,8 @@
         	dirDX = accel.getAY();
         	dirDY = accel.getAX();
         	
-        	dirDX *= -5;
-        	dirDY *= -5;
+        	dirDX *= -2;
+        	dirDY *= -2;
         	
         	santa.setDX(dirDX);
         	santa.setDY(dirDY);
@@ -237,7 +237,7 @@
 	function init(){
 		game = new Scene();		
 		game.setBG("green");
-		game.setSize(600, 400);
+		game.setSize(550, 400);
 			
 		santa = new Santa();		
 		cookie = new Cookie();				
@@ -250,8 +250,8 @@
 		
 		accel = new Accel();
 		
-		floor = new Sprite(game, "floor.png", 600, 400);
-		floor.setPosition(300, 200);
+		floor = new Sprite(game, "floor.png", 550, 400);
+		floor.setPosition(275, 200);
 		floor.setSpeed(0);
 		
 		game.start();
