@@ -100,9 +100,9 @@
     		numGifts++;
     		numSocks++;
     		cookie.reset();
-    		setupKids();
-    		setupGifts();
-    		setupSocks();
+    		makeKids();
+    		makeGifts();
+    		makeSocks();
     		
     	}
     }
@@ -133,14 +133,14 @@
     	return tGift;
     	
     }
-     function setupGifts(){
+     function makeGifts(){
     	gifts = new Array(numGifts)
     	for (i = 0; i < numGifts; i++){
     		gifts[i] = new Gift();
     	}
     } 
     
-    function updateGifts(){
+    function collideGifts(){
     	for (i = 0; i < numGifts; i++){
     		if (gifts[i].collidesWith(santa)){
     			alert("You Ruined Christmas because you stepped on the Gifts!!");
@@ -178,14 +178,14 @@
     	return tSock;
     	
     }
-     function setupSocks(){
+     function makeSocks(){
     	socks = new Array(numSocks)
     	for (i = 0; i < numSocks; i++){
     		socks[i] = new Sock();
     	}
     } 
     
-    function updateSocks(){
+    function collideSocks(){
     	for (i = 0; i < numSocks; i++){
     		if (socks[i].collidesWith(santa)){
     			alert("Stepped on Stocking!!!");
@@ -216,14 +216,14 @@
     	
     }
     
-    function setupKids(){
+    function makeKids(){
     	kids = new Array(numKids)
     	for (i = 0; i < numKids; i++){
     		kids[i] = new Kid();
     	}
     }
     
-    function updateKids(){
+    function collideKids(){
     	for (i = 0; i < numKids; i++){
     		kids[i].move();
     		if (kids[i].collidesWith(santa)){
@@ -246,9 +246,9 @@
 		kid = new Kid();	
 		gift = new Gift();	
 		sock = new Sock();
-		setupGifts();
-		setupKids();
-		setupSocks();
+		makeGifts();
+		makeKids();
+		makeSocks();
 		
 		accel = new Accel();
 		
@@ -277,11 +277,11 @@
 		kid.update();
 		gift.update();
 	   	sock.update();
-		updateGifts();
-		updateSocks();
+		collideGifts();
+		collideSocks();
 		for (i = 0; i < numKids; i++){
 			kids[i].move();
-			updateKids();
+			collideKids();
 			kids[i].update();
 		}
 	
