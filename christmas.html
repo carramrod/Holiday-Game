@@ -70,7 +70,7 @@
     }	
    
     Cookie = function(){
-    	tCookie = new Sprite(game, "cookies.png", 50, 50);
+    	tCookie = new Sprite(game, "cookies.png", 25, 25);
     	tCookie.setSpeed(0);
     	tCookie.setPosition(200, 200);
     	
@@ -105,7 +105,7 @@
     	}
     }
     Gift = function(){
-    	tGift = new Sprite(game, "gift2.png", 50, 50);
+    	tGift = new Sprite(game, "gift2.png", 20, 20);
     	tGift.setSpeed(0);
     	tGift.setPosition(200, 200);
     	
@@ -150,7 +150,7 @@
    	
     	
    	Sock = function(){
-    	tSock = new Sprite(game, "stocking.png", 50, 50);
+    	tSock = new Sprite(game, "stocking.png", 20, 20);
     	tSock.setSpeed(0);
     	tSock.setPosition(200, 200);
     	
@@ -195,7 +195,7 @@
    	
    	
     Kid = function(){
-    	tKid = new Sprite(game, "kid.png", 50, 50);
+    	tKid = new Sprite(game, "kid.png", 20, 20);
     	tKid.setSpeed(3);
     	
     	
@@ -237,7 +237,7 @@
 	function init(){
 		game = new Scene();		
 		game.setBG("green");
-		game.setSize(400, 280);
+		game.setSize(500, 380);
 			
 		santa = new Santa();		
 		cookie = new Cookie();				
@@ -250,8 +250,8 @@
 		
 		accel = new Accel();
 		
-		floor = new Sprite(game, "floor.png", 400, 280);
-		floor.setPosition(200, 140);
+		floor = new Sprite(game, "floor.png", 500, 380);
+		floor.setPosition(250, 190);
 		floor.setSpeed(0);
 		
 		game.start();
