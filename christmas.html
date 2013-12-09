@@ -57,11 +57,11 @@
         }
         tSanta.checkAccel = function(){
         
-        	dirDX = accel.getAY();
-        	dirDY = accel.getAX();
+        	dirDX = accel.getAX();
+        	dirDY = accel.getAY();
         	
-        	dirDX *= -10;
-        	dirDY *= -10;
+        	dirDX *= -5;
+        	dirDY *= -5;
         	
         	santa.setDX(dirDX);
         	santa.setDY(dirDY);
@@ -141,7 +141,7 @@
     function updateGifts(){
     	for (i = 0; i < numGifts; i++){
     		if (gifts[i].collidesWith(santa)){
-    			alert("Stepped on Gift!!!");
+    			alert("You Ruined Christmas because you stepped on the Gifts!!");
     			document.location.href = "";
     		}
     		gifts[i].update();
@@ -186,7 +186,7 @@
     function updateSocks(){
     	for (i = 0; i < numSocks; i++){
     		if (socks[i].collidesWith(santa)){
-    			alert("Stepped on Gift!!!");
+    			alert("Stepped on Stocking!!!");
     			document.location.href = "";
     		}
     		socks[i].update();
@@ -225,7 +225,7 @@
     	for (i = 0; i < numKids; i++){
     		kids[i].move();
     		if (kids[i].collidesWith(santa)){
-    			alert("Collided with Kid");
+    			alert("You were spotted by a kid and have ruined christmas!!!");
     			document.location.href = "";
     		}
     		
