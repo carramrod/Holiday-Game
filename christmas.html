@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Christmas Night</title>
+    <script type="text/javascript" 
+			src="simpleGame.js"></script>	
+    <script type="text/javascript">		
+    var game;
+	var santa;	
+	var cookie;
+	var gifts;
+	var socks;
+	var kids;
+	var accel;
+	var floor;
+	
+	var numSocks = 5;
+	var numGifts = 10;
+	var numKids = 5;
+	
+	
+	//build santa first to make sure he populatesDONE and movesDONE
+	//make cookie next to make sure it populates on screen DONE
+	//make obstacles such as presentsDONE, stockingsDONE, and a kid make sure they populateDONE
+	//make kid moveDONE
+	//make multiple objects on screenDONE finally!!!!
+	//put in background DONE
+	
+	
+	Santa = function(){
+		tSanta = new Sprite(game, "santa.png", 30, 30);
+		tSanta.setSpeed(0);
+		tSanta.setPosition(100, 100);
+		
+		tSanta.reset = function(){
+			dirX = Math.random() * this.cWidth;
+			dirY = Math.random() * this.cHeight;
+			this.setPosition(dirX, dirY);
+		}
+		
+		tSanta.checkKeys = function(){
+			if(keysDown[K_UP]){
+				this.changeYby(-15);
+			}
+			if (keysDown[K_DOWN]){
+                this.changeYby(15);
+            }
+            
+            if (keysDown[K_LEFT]){
+                this.changeXby(-15);
+            }
+            
+            if (keysDown[K_RIGHT]){
+                this.changeXby(15);
+            }
+        }
+        tSanta.checkAccel = function(){
+        
+        	dirDX = accel.getAY();
+        	dirDY = accel.getAX();
+        	
+        	dirDX *= -10;
+        	dirDY *= -10;
+        	
+        	santa.setDX(dirDX);
+        	santa.setDY(dirDY);
+        }
+        return tSanta;
+    }	
+   
+    Cookie = function(){
+    	tCookie = new Sprite(game, "cookies.png", 35, 35);
+    	tCookie.setSpeed(0);
+    	tCookie.setPosition(200, 200);
+    	
+    	tCookie.reset = function(){
+    		
+    		//make sure cookie spawns a certain distance away and not right next to santa 
+    		keepGoing = true;
+    		while(keepGoing){
+    			dirX = Math.random() * this.cWidth;
+    			dirY = Math.random() * this.cHeight;
+    			this.setPosition(dirX, dirY);
+    			keepGoing = false;
+    			if (this.distanceTo(santa)< 200){
+    				keepGoing = true;
+    			}
+    		}
+    	} 	
+    	tCookie.reset();
+    	return tCookie;
+    }	
+    
+    function finishCookie(){
+    	if (santa.collidesWith(cookie)){
+    		numKids++;
+    		numGifts++;
+    		numSocks++;
+    		cookie.reset();
+    		setupKids();
+    		setupGifts();
+    		setupSocks();
+    		
+    	}
+    }
+    Gift = function(){
+    	tGift = new Sprite(game, "gift2.png", 50, 50);
+    	tGift.setSpeed(0);
+    	tGift.setPosition(200, 200);
+    	
+    	tGift.reset = function(){
+    		keepGoing = true;
+    		while(keepGoing){
+    			dirX = Math.random() * this.cWidth;
+    			dirY = Math.random() * this.cHeight;
+    			this.setPosition(dirX, dirY);
+    			
+    			keepGoing = false;
+    			if (this.collidesWith(cookie)){
+    				keepGoing = true;
+    			}
+    			if (this.distanceTo(santa)< 200){
+    				keepGoing = true;
+    			}
+    			
+    			
+    		}
+    	}
+    	tGift.reset();
+    	return tGift;
+    	
+    }
+     function setupGifts(){
+    	gifts = new Array(numGifts)
+    	for (i = 0; i < numGifts; i++){
+    		gifts[i] = new Gift();
+    	}
+    } 
+    
+    function updateGifts(){
+    	for (i = 0; i < numGifts; i++){
+    		if (gifts[i].collidesWith(santa)){
+    			alert("Stepped on Gift!!!");
+    			document.location.href = "";
+    		}
+    		gifts[i].update();
+    	}
+    } 
+   	
+    	
+   	Sock = function(){
+    	tSock = new Sprite(game, "stocking.png", 50, 50);
+    	tSock.setSpeed(0);
+    	tSock.setPosition(200, 200);
+    	
+    	tSock.reset = function(){
+    		keepGoing = true;
+    		while(keepGoing){
+    			dirX = Math.random() * this.cWidth;
+    			dirY = Math.random() * this.cHeight;
+    			this.setPosition(dirX, dirY);
+    			
+    			keepGoing = false;
+    			if (this.collidesWith(cookie)){
+    				keepGoing = true;
+    			}
+    			if (this.distanceTo(santa)< 200){
+    				keepGoing = true;
+    			}
+    			
+    			
+    		}
+    	}
+    	tSock.reset();
+    	return tSock;
+    	
+    }
+     function setupSocks(){
+    	socks = new Array(numSocks)
+    	for (i = 0; i < numSocks; i++){
+    		socks[i] = new Sock();
+    	}
+    } 
+    
+    function updateSocks(){
+    	for (i = 0; i < numSocks; i++){
+    		if (socks[i].collidesWith(santa)){
+    			alert("Stepped on Gift!!!");
+    			document.location.href = "";
+    		}
+    		socks[i].update();
+    	}
+    } 
+   	
+   	
+    Kid = function(){
+    	tKid = new Sprite(game, "kid.png", 50, 50);
+    	tKid.setSpeed(3);
+    	
+    	
+    	tKid.move = function(){
+    		newDir = (Math.random() * 90) - 40;
+    		this.changeAngleBy(newDir);
+    	}
+    		
+    	tKid.reset = function(){
+    		dirX = Math.random() * this.cWidth;
+    		dirY = Math.random() * this.cHeight;
+    		this.setPosition(dirX, dirY);
+    	}
+    	tKid.reset();
+    	return tKid;
+    	
+    }
+    
+    function setupKids(){
+    	kids = new Array(numKids)
+    	for (i = 0; i < numKids; i++){
+    		kids[i] = new Kid();
+    	}
+    }
+    
+    function updateKids(){
+    	for (i = 0; i < numKids; i++){
+    		kids[i].move();
+    		if (kids[i].collidesWith(santa)){
+    			alert("Collided with Kid");
+    			document.location.href = "";
+    		}
+    		
+    		kids[i].update();
+    	}
+    }	
+    /**/
+
+	function init(){
+		game = new Scene();		
+		game.setBG("green");
+			
+		santa = new Santa();		
+		cookie = new Cookie();				
+		kid = new Kid();	
+		gift = new Gift();	
+		sock = new Sock();
+		setupGifts();
+		setupKids();
+		setupSocks();
+		
+		accel = new Accel();
+		
+		floor = new Sprite(game, "floor.png", 800,600);
+		floor.setPosition(400, 300);
+		floor.setSpeed(0);
+		
+		game.start();
+		
+		
+	}
+	
+	function update(){
+		game.clear();		
+		kid.move();
+				
+		if (game.touchable){
+            santa.checkAccel();            
+        } else {
+            santa.checkKeys();            
+        }      
+        floor.update();	
+        finishCookie();					
+		santa.update();		
+		cookie.update();				
+		kid.update();
+		gift.update();
+	   	sock.update();
+		updateGifts();
+		updateSocks();
+		for (i = 0; i < numKids; i++){
+			kids[i].move();
+			updateKids();
+			kids[i].update();
+		}
+	
+	}	
+	</script>
+</head>
+<body onload = "init()">
+
+</body>
+</html>
