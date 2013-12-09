@@ -3,16 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Christmas Night</title>
-     <style>
-    	@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    		.app {
-        		background-position:left center;
-        		padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        		margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-              			                        /* offset horizontal: half of image width and text area width */
-    			}	
-		}
-	</style>	
+     
     <script type="text/javascript" 
 			src="simpleGame.js"></script>	
     <script type="text/javascript">	
@@ -248,7 +239,7 @@
 	function init(){
 		game = new Scene();		
 		game.setBG("green");
-		game.setSize(500, 400);
+		game.setSize(200, 300);
 			
 		santa = new Santa();		
 		cookie = new Cookie();				
@@ -261,8 +252,8 @@
 		
 		accel = new Accel();
 		
-		floor = new Sprite(game, "floor.png", 500, 400);
-		floor.setPosition(250, 200);
+		floor = new Sprite(game, "floor.png", 200, 300);
+		floor.setPosition(100, 150);
 		floor.setSpeed(0);
 		
 		game.start();
